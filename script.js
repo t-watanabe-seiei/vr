@@ -27,5 +27,17 @@ AFRAME.registerComponent("vr-controller", {
     this.el.addEventListener("raycaster-intersection-cleared", function(e) {
       text.setAttribute("value", "Intersection:cleared");
     });
-  }
+
+    this.el.addEventListener("raycaster-intersected", function(e) {
+      text.setAttribute("value", "raycaster-intersected");
+    });
+
+    this.el.addEventListener("raycaster-intersected-cleared", function(e) {
+      text.setAttribute("value", "raycaster-intersected-cleared");
+
+      this.el.addEventListener("raycaster-closest-entity-changed", function(e) {
+        text.setAttribute("value", "raycaster-closest-entity-changed");
+      });
+
+    }
 });
