@@ -13,12 +13,12 @@ AFRAME.registerComponent("vr-controller", {
     //   text.setAttribute("value", "GripUp!!");
     // });
 
-    // this.el.addEventListener("triggerdown", function(e) {
-    //   text.setAttribute("value", "TriggerDown!!");
-    // });
-    // this.el.addEventListener("triggerup", function(e) {
-    //   text.setAttribute("value", "TriggerUp!!");
-    // });
+    this.el.addEventListener("triggerdown", function(e) {
+      text.setAttribute("value", "TriggerDown!!");
+    });
+    this.el.addEventListener("triggerup", function(e) {
+      text.setAttribute("value", "TriggerUp!!");
+    });
 
     this.el.addEventListener("raycaster-intersection", function(e) {
       text.setAttribute("value", "Intersection:captured");
