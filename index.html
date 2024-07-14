@@ -9,7 +9,8 @@
   <script>
     AFRAME.registerComponent("vr-controller", {
       init: function() {
-        const txt = document.getElementById("txt");
+        
+        const txt = document.getElementById("my_text");
         const el = this.el;
 
         // raycasterにぶつかったオブジェクト
@@ -77,7 +78,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
       
-      <a-text id="my_text" value="*****" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+      <a-text id="my_text" value="**14**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
     </a-camera>
     <!-- Plane, Shapes -->
     <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane>
