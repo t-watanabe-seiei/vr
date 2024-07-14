@@ -6,12 +6,12 @@ AFRAME.registerComponent("vr-controller", {
     const text = document.getElementById("my_text");
     text.setAttribute("value", "Controller is ready!?");
 
-    // this.el.addEventListener("gripdown", function(e) {
-    //   text.setAttribute("value", "GripDown!!");
-    // });
-    // this.el.addEventListener("gripup", function(e) {
-    //   text.setAttribute("value", "GripUp!!");
-    // });
+    this.el.addEventListener("gripdown", function(e) {
+      text.setAttribute("value", "GripDown!!");
+    });
+    this.el.addEventListener("gripup", function(e) {
+      text.setAttribute("value", "GripUp!!");
+    });
 
     this.el.addEventListener("triggerdown", function(e) {
       text.setAttribute("value", "TriggerDown!!");
@@ -22,9 +22,6 @@ AFRAME.registerComponent("vr-controller", {
 
     this.el.addEventListener("raycaster-intersection", function(e) {
       text.setAttribute("value", "Intersection:captured");
-      this.el.addEventListener("gripdown", function(e) {
-        text.setAttribute("value", "raycaster-intersection and GripDown!!");
-      });
     });
 
     this.el.addEventListener("raycaster-intersection-cleared", function(e) {

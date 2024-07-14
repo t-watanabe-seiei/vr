@@ -7,28 +7,32 @@
   <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
   <script src="https://unpkg.com/three@0.131.3/examples/js/loaders/TDSLoader.js"></script>
   <script src="./script.js"></script>
+  <script>
+    AFRAME.registerComponent("clicktest", {
+      init: function () {
+        this.el.addEventListener("click", function (evt) {
+          console.log("clicked!");
+          var sphere = document.getElementById(this.id);
+          var color = sphere.getAttribute("color");
+          if (color.match("red")) {
+            sphere.setAttribute("color", "yellow");
+          } else if (color.match("yellow")) {
+            sphere.setAttribute("color", "red");
+          }
+        });
+      },
+    });
+  </script>
 </head>
 
 <body>
-  <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray">
-    <!-- Controller -->
-    <a-entity laser-controls="hand: left" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
-    <a-entity laser-controls="hand: right" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
-
-    <!-- Camera -->
-    <a-camera id="my_camera">
-      <a-cursor></a-cursor>
-
-      <a-text id="my_text" value="*****" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
-        color="#ffffff"></a-text>
-    </a-camera>
-    <!-- Plane, Shapes -->
-    <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane>
-    <a-box class="collidable" position="-1.5 0.5 -2.5" rotation="0 20 0" color="#4CC3D9"></a-box>
-    <a-sphere class="collidable" position="0 0.5 -3" radius="0.5" color="#EF2D5E"></a-sphere>
-    <a-cylinder class="collidable" position="1.5 0.5 -2.5" radius="0.5" height="1" color="#FFC65D"></a-cylinder>
-
-  </a-scene>
+    <a-scene>
+      <a-light type="directional" color="#FFF" intensity="1" position="0 2 1"></a-light>
+      <a-sphere clicktest id="sphere" class="collidable" position="0 1.25 -5" radius="1.25" color="red"></a-sphere>
+      <a-camera position="0 0 0">
+        <a-cursor cursor="rayOrigin: mouse" visible="true" raycaster="objects: .collidable"></a-cursor>
+      </a-camera>
+    </a-scene>  
 </body>
 
 </html>
