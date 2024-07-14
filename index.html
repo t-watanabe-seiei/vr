@@ -5,7 +5,67 @@
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
   <script src="https://unpkg.com/three@0.131.3/examples/js/loaders/TDSLoader.js"></script>
-  <script src="./script.js"></script>
+  <!-- <script src="./script.js"></script> -->
+  <script>
+    AFRAME.registerComponent("vr-controller", {
+      init: function() {
+        const txt = document.getElementById("txt");
+        const el = this.el;
+
+        // raycasterにぶつかったオブジェクト
+        el.selectedObject = null;
+
+        // コントローラーのグリップボタンが押されているかを表現する
+        el.grip = false;
+
+        el.addEventListener('gripdown', function (event) {
+          txt.setAttribute("value", "Grip down");
+          el.grip = true;
+        });
+        el.addEventListener('gripup', function (event) {
+          txt.setAttribute("value", "Grip up");
+          el.grip = false;
+        });
+
+        el.addEventListener("raycaster-intersection", function(e) {
+          txt.setAttribute("value", "Raycaster intersection");
+          this.selectedObject = e.detail.els[0];
+        });
+        el.addEventListener("raycaster-intersection-cleared", function(e) {
+          txt.setAttribute("value", "");
+          this.selectedObject = null;
+        });
+      },
+
+      tick: function() {
+        var el = this.el;
+        if (!el.selectedObject) {
+          return;
+        }
+        if (!el.grip) {
+          return;
+        }
+
+        // オブジェクトとぶつかったraycaster(コントローラー原点の座標)を取得
+        var ray = el.getAttribute("raycaster").direction;
+
+        // コントローラーから見たraycasterとの方向のみを取り出す
+        var p = new THREE.Vector3(ray.x, ray.y, ray.z);
+        p.normalize();
+
+        // raycasterとぶつかった部分と同じ位置にオブジェクトを動かす場合はfarと同じにする
+        // 引き寄せる場合はfarよりも小さくする
+        p.multiplyScalar(2);
+
+        // コントローラー原点からワールド原点に変換して新しいオブジェクトの位置を計算する
+        el.object3D.localToWorld(p);
+
+        // オブジェクトを移動させる
+        el.selectedObject.object3D.position.set(p.x, p.y, p.z);
+      }
+    });
+  </script>
+
 </head>
 <body>
   <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray">
