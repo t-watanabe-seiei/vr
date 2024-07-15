@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
   <script src="https://unpkg.com/three@0.131.3/examples/js/loaders/TDSLoader.js"></script>
   <!-- <script src="./script.js"></script> -->
@@ -51,17 +51,18 @@
         var ray = el.getAttribute("raycaster").direction;
 
         // コントローラーから見たraycasterとの方向のみを取り出す
-        var p = new THREE.Vector3(ray.x, ray.y, ray.z);
-        p.normalize();
-
         // raycasterとぶつかった部分と同じ位置にオブジェクトを動かす場合はfarと同じにする
         // 引き寄せる場合はfarよりも小さくする
-        p.multiplyScalar(2);
+        // コントローラの1.2m手前の座標を計算（コントローラーが原点）
+        var p = new THREE.Vector3(ray.x, ray.y, ray.z);
+        p.normalize();
+        p.multiplyScalar(1.2);
 
         // コントローラー原点からワールド原点に変換して新しいオブジェクトの位置を計算する
+        // ローカル座標（コントローラ中心）をワールド座標に変換
         el.object3D.localToWorld(p);
 
-        // オブジェクトを移動させる
+        // オブジェクトを移動させる（raycasterの先端にオブジェクトを追従させる）
         el.selectedObject.object3D.position.set(p.x, p.y, p.z);
       }
     });
@@ -70,21 +71,34 @@
 </head>
 <body>
   <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray">
+    <a-assets timeout="9000">
+      <a-asset-item id="akaei01" src="./assets/akaei-base.glb"></a-asset-item>
+      <a-asset-item id="akaei02" src="./assets/akaei-swing-dance.glb"></a-asset-item>
+      <a-asset-item id="dounut" src="./assets/dounut.glb"></a-asset-item>
+    </a-assets>
+
+    
     <!-- Controller -->
     <a-entity laser-controls="hand: left" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
     <a-entity laser-controls="hand: right" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
     
-    <!-- Camera -->
+    <!-- コントローラーの操作状況が分かるようにカメラにテキストを配置 -->
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
       
-      <a-text id="my_text" value="**14**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+      <a-text id="my_text" value="**15**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
     </a-camera>
+    
+    
     <!-- Plane, Shapes -->
     <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane>
     <a-box class="collidable" position="-1.5 0.5 -2.5" rotation="0 20 0" color="#4CC3D9"></a-box>
-    <a-sphere class="collidable" position="0 0.5 -3" radius="0.5" color="#EF2D5E"></a-sphere>
-    <a-cylinder class="collidable" position="1.5 0.5 -2.5" radius="0.5" height="1" color="#FFC65D"></a-cylinder>
+
+    <a-gltf-model class="collidable" src="#dounut" data-color="original" scale="2 2 2" rotation="0 -90 0" position="0 1 1" animation-mixer
+      visible="true"></a-gltf-model>
+
+    <a-entity class="collidable" gltf-model="#akaei01" scale="2 2 2" rotation="0 30 0" position="-0.6 1.25 -1.1" animation-mixer></a-entity>
+
     
   </a-scene>
 </body>
