@@ -76,6 +76,7 @@
       <a-asset-item id="akaei01" src="./assets/akaei-base.glb"></a-asset-item>
       <a-asset-item id="akaei02" src="./assets/akaei-swing-dance.glb"></a-asset-item>
       <a-asset-item id="dounut" src="./assets/dounut.glb"></a-asset-item>
+      <img id="360degreegb" src="./assets/puydesancy.jpg">
     </a-assets>
 
     
@@ -87,18 +88,19 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
       
-      <a-text id="my_text" value="**16**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+      <a-text id="my_text" value="**17**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
     </a-camera>
     
     
     <!-- Plane, Shapes -->
     <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane>
-    <a-box class="collidable" position="-1.5 0.5 -2.5" rotation="0 20 0" color="#4CC3D9"></a-box>
 
-    <a-gltf-model class="collidable" src="#dounut" data-color="original" scale="2 2 2" rotation="0 -90 0" position="0 1 1" animation-mixer
-      visible="true"></a-gltf-model>
+    <a-entity gltf-model="#dounut" class="collidable" scale="2 2 2" rotation="0 -90 0" position="-1.5 0.5 -2.5" animation-mixer
+      visible="true"></a-entity>
 
-    <a-entity gltf-model="#akaei01" class="collidable" scale="2 2 2" rotation="0 30 0" position="-0.6 1.25 -1.1" animation-mixer></a-entity>
+    <a-entity gltf-model="#akaei01" scale="1 1 1" rotation="0 30 0" position="-0.6 1.25 -1.1" animation-mixer></a-entity>
+
+    <a-sky src="#360degreegb"></a-sky>
 
     
   </a-scene>
