@@ -18,7 +18,9 @@
             //コントローラの位置を取得(thisはコントローラ)
             var point = this.object3D.getWorldPosition();
             //ボールを生成
-            var ball = document.createElement('a-sphere');
+            // var ball = document.createElement('a-sphere');
+            var ball = document.createElement('a-entity');
+            ball.setAttribute('src', './assets/dounut.glb');
             ball.setAttribute('class', 'ball');
             ball.setAttribute('scale', '0.2 0.2 0.2');
             ball.setAttribute('position', point);
@@ -137,7 +139,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
       
-      <a-text id="my_text" value="**28** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+      <a-text id="my_text" value="**29** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
     </a-camera>
 
 
