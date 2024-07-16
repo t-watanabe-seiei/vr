@@ -176,7 +176,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
 
-      <a-text id="my_text" value="**36** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
+      <a-text id="my_text" value="**37** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
         color="#ffffff"></a-text>
     </a-camera>
 
@@ -186,10 +186,9 @@
     <!-- Plane, Shapes -->
     <!-- <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane> -->
 
-    <a-entity static-body gltf-model="#dounut" class="collidable" scale="2 2 2" rotation="0 -90 0"
-      position="-1.5 0.5 -2.5" animation-mixer></a-entity>
-    <a-entity static-body gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer></a-entity>
-    <a-entity static-body gltf-model="#akaei_standing" class="collidable" scale="4 4 4" rotation="0 30 0" position="-0.6 0.2 -0.3" animation-mixer></a-entity>
+    <a-entity static-body gltf-model="#dounut" class="collidable" scale="2 2 2" rotation="0 -90 0" position="-1.5 0.5 -2.5" animation-mixer></a-entity>
+    <!-- <a-entity static-body gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer></a-entity> -->
+    <a-entity dynamic-body gltf-model="#akaei_standing" class="collidable" scale="4 4 4" rotation="0 30 0" position="-0.6 0.2 -0.3" animation-mixer></a-entity>
     
 
     <!-- モデルのヒットボックスが正しく設定されていない場合、オブジェクトが選択されないことがあります。これを確認するために、以下のようにしてバウンディングボックスを手動で設定します。 -->
@@ -198,7 +197,7 @@
       <a-box position="0 0 0" width="1" height="1" depth="1" visible="false"></a-box>
     </a-entity> -->
     
-    <!-- <a-entity static-body="shape: auto;" gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer></a-entity> -->
+    <a-entity static-body="shape: auto;" gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer></a-entity>
 
 
     <a-sky src="#360degreegb"></a-sky>
