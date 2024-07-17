@@ -10,18 +10,22 @@
 
 </head>
 <script>
+  AFRAME.registerComponent('sync-physics', {
+    tick: function() {
+      var el = this.el;
+      var body = el.body;
+      if (body) {
+        var position = el.getAttribute('position');
+        var rotation = el.getAttribute('rotation');
+        body.position.set(position.x, position.y, position.z);
+        body.quaternion.setFromEuler(rotation.x * Math.PI / 180, rotation.y * Math.PI / 180, rotation.z * Math.PI / 180);
+      }
+    }
+  });
+
+  
   AFRAME.registerComponent("vr-controller", {
     init: function () {
-      document.querySelector('#akaei01').addEventListener('model-loaded', function(e) {
-        var model = e.detail.model;
-        model.traverse(function(node) {
-          if (node.isBone) {
-            node.el.setAttribute('kinematic-body', '');
-          }
-        });
-      });
-      
-
 
       //トリガーを押した時に球を発射 
       this.el.addEventListener('triggerdown', function (e) {
@@ -67,6 +71,8 @@
                   }
               }
           });
+
+        
         
       });
 
@@ -197,7 +203,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
 
-      <a-text id="my_text" value="**48** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
+      <a-text id="my_text" value="**49** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
         color="#ffffff"></a-text>
     </a-camera>
 
@@ -222,7 +228,9 @@
       <a-box position="0 0 0" width="1" height="1" depth="1" visible="false"></a-box>
     </a-entity> -->
     
-    <a-entity gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer kinematic-body></a-entity>
+    <a-entity gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer dynamic-body sync-physics></a-entity>
+
+
 
 
 
