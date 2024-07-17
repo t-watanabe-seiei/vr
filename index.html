@@ -10,18 +10,6 @@
 
 </head>
 <script>
-  AFRAME.registerComponent('sync-physics', {
-    tick: function() {
-      var el = this.el;
-      var body = el.body;
-      if (body) {
-        var position = el.getAttribute('position');
-        var rotation = el.getAttribute('rotation');
-        body.position.set(position.x, position.y, position.z);
-        body.quaternion.setFromEuler(rotation.x * Math.PI / 180, rotation.y * Math.PI / 180, rotation.z * Math.PI / 180);
-      }
-    }
-  });
 
   
   AFRAME.registerComponent("vr-controller", {
@@ -180,8 +168,33 @@
       el.selectedObject.object3D.position.set(p.x, p.y, p.z);
     }
   });
+
 </script>
 
+<script>
+  window.addEventListener('load', function () {
+    var animatedEntity = document.querySelector('#animated-entity');
+    var physicsBody = document.querySelector('#physics-body');
+
+    if (animatedEntity && physicsBody) {
+      AFRAME.registerComponent('sync-physics', {
+        tick: function () {
+          var position = animatedEntity.object3D.position;
+          var rotation = animatedEntity.object3D.rotation;
+
+          physicsBody.object3D.position.copy(position);
+          physicsBody.object3D.rotation.copy(rotation);
+        }
+      });
+
+      animatedEntity.setAttribute('sync-physics', '');
+    } else {
+      console.error('animatedEntity or physicsBody not found');
+    }
+  });
+
+</script>
+  
 </head>
 
 <body>
@@ -203,7 +216,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
 
-      <a-text id="my_text" value="**49** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
+      <a-text id="my_text" value="**50** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
         color="#ffffff"></a-text>
     </a-camera>
 
@@ -228,8 +241,9 @@
       <a-box position="0 0 0" width="1" height="1" depth="1" visible="false"></a-box>
     </a-entity> -->
     
-    <a-entity gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer dynamic-body sync-physics></a-entity>
-
+    <a-entity id="animated-entity" static-body gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer>
+      <a-box id="physics-body" dynamic-body position="0 0 0" visible="false"></a-box>
+    </a-entity>
 
 
 
