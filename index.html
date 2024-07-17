@@ -199,7 +199,7 @@
 
 <body>
   <!-- <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray"> -->
-  <a-scene physics="debug: false; gravity: 0.2; restitution: 0.9; ">
+  <a-scene physics="debug: false; gravity: -0.99; restitution: 0.9; ">
     <a-assets timeout="9000">
       <a-asset-item id="akaei01" src="./assets/akaei-base.glb"></a-asset-item>
       <a-asset-item id="dounut" src="./assets/dounut.glb"></a-asset-item>
@@ -216,7 +216,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
 
-      <a-text id="my_text" value="**55** gravity: 0.2 **物理エンジンで、衝突判定OK（アニメーションありも、アニメーションなしも）＆衝突したオブジェクトのID取得" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
+      <a-text id="my_text" value="**56** gravity: -0.99 **物理エンジンで、衝突判定OK（アニメーションありも、アニメーションなしも）＆衝突したオブジェクトのID取得" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
         color="#ffffff"></a-text>
     </a-camera>
 
@@ -224,7 +224,7 @@
 
 
     <!-- Plane, Shapes -->
-    <!-- <a-plane position="0 0.1 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"></a-plane> -->
+    <a-plane position="0 -0.1 0" scale="5 5 5" rotation="-90 0 0" width="2" height="2" color="#7BC8A4" static-body ></a-plane>
 
     <a-entity id="001 dounut" static-body gltf-model="#dounut" class="collidable" scale="2 2 2" rotation="0 -90 0" position="-1.5 0.5 -2.5" animation-mixer></a-entity>
     <!-- <a-entity static-body gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer></a-entity> -->
