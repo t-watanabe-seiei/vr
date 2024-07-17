@@ -12,7 +12,7 @@
 <script>
   AFRAME.registerComponent("vr-controller", {
     init: function () {
-      document.querySelector('#dance').addEventListener('model-loaded', function(e) {
+      document.querySelector('#akaei01').addEventListener('model-loaded', function(e) {
         var model = e.detail.model;
         model.traverse(function(node) {
           if (node.isBone) {
@@ -197,7 +197,7 @@
     <a-camera id="my_camera">
       <a-cursor></a-cursor>
 
-      <a-text id="my_text" value="**46** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
+      <a-text id="my_text" value="**47** aframe 1.0.4 **" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center"
         color="#ffffff"></a-text>
     </a-camera>
 
@@ -222,9 +222,9 @@
       <a-box position="0 0 0" width="1" height="1" depth="1" visible="false"></a-box>
     </a-entity> -->
     
-    <a-entity id="dance" gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer dynamic-body="collisionFilterGroup: 1; collisionFilterMask: 2"></a-entity>
+    <a-entity gltf-model="#akaei01" class="collidable" scale="1 1 1" rotation="0 30 0" position="-0.6 0.2 -1.1" animation-mixer kinematic-body="collisionFilterGroup: 1; collisionFilterMask: 2"></a-entity>
 
-  
+
 
     <a-sky src="#360degreegb"></a-sky>
 
