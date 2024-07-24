@@ -1,0 +1,49 @@
+<!--  クリックやタップ、トリガー引きのたびに全天球画像が切り替わる -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360 image slide show</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- 全天球画像を表示するためのスカイコンポーネント -->
+      <a-sky id="sky" src="./assets/R0010005.JPG"></a-sky>
+      <a-entity laser-controls="hand: right"></a-entity>
+    </a-scene>
+
+    <script>
+      AFRAME.registerComponent('image-changer', {
+        init: function () {
+          var sky = document.getElementById('sky');
+          var images = [
+            './assets/R0010005.JPG',
+            './assets/R0010006.JPG',
+            './assets/puydesancy.jpg',
+            './assets/umi.jpg',
+            './assets/roma.jpg'
+          ];
+          var currentIndex = 0;
+
+          var changeImage = function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            sky.setAttribute('src', images[currentIndex]);
+          };
+
+          // マウスクリックイベントをリスン
+          this.el.addEventListener('click', changeImage);
+
+          // VRコントローラーのトリガーイベントをリスン
+          this.el.addEventListener('triggerdown', changeImage);
+
+          // スマホのタップイベントをリスン
+          this.el.addEventListener('touchstart', changeImage);
+        }
+      });
+
+      // a-scene エレメントに image-changer コンポーネントをアタッチ
+      document.querySelector('a-scene').setAttribute('image-changer', '');
+    </script>
+  </body>
+</html>
