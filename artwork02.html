@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>student's artwork 02</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  </head>
+
+<body>
+  <!-- <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray"> -->
+  <a-scene>
+    <!-- 360度画像を表示 -->
+    <a-sky src="./assets/R0010041.JPG"></a-sky>  <!--講堂-->
+
+    <!-- アニメーション付きGLBファイルを表示 -->
+    <a-entity 
+      gltf-model="url(./assets/akaei-base.glb)")"
+      animation-mixer
+      position="10.5 -1.767 0.147"
+      rotation="0 220 0" 
+      scale="7 7 7"
+      >
+    </a-entity>
+    
+    <!-- カメラの設定 -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+
+
+  </a-scene>
+</body>
+</html>

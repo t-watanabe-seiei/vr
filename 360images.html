@@ -18,12 +18,13 @@
         init: function () {
           var sky = document.getElementById('sky');
           var images = [
-            './assets/R0010005.JPG',
-            './assets/R0010006.JPG',
             './assets/R0010034.JPG',
             './assets/R0010035.JPG',
             './assets/R0010036.JPG',
-            './assets/puydesancy.jpg'
+            './assets/R0010041.JPG',
+            './assets/R0010056.JPG',
+            './assets/R0010064.JPG',
+            './assets/R0010006.JPG'
           ];
           var currentIndex = 0;
 
@@ -37,6 +38,7 @@
 
           // VRコントローラーのトリガーイベントをリスン
           this.el.addEventListener('triggerdown', changeImage);
+          
 
           // スマホのタップイベントをリスン
           this.el.addEventListener('touchstart', changeImage);

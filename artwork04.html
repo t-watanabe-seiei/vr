@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>student's artwork 04</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+  </head>
+
+<body>
+  <!-- <a-scene stats loading-screen="dotsColor: gray; backgroundColor: lightgray"> -->
+  <a-scene>
+    <!-- 360度画像を表示 -->
+    <a-sky src="./assets/R0010064.JPG"></a-sky>  <!--テニスコート-->
+
+    <!-- アニメーション付きGLBファイルを表示 -->
+    <a-entity 
+      gltf-model="url(./assets/akaei-dance2.glb)")"
+      animation-mixer
+      position="-5.055 -0.425 1.2"
+      rotation="0 130 0" 
+      scale="20 20 20"
+      >
+    </a-entity>
+    
+    <!-- カメラの設定 -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+
+
+  </a-scene>
+</body>
+</html>
