@@ -166,7 +166,7 @@
 </head>
 
 <body>
-    <a-scene>
+        <a-scene physics="debug: false; gravity: 0; restitution: 0.9; ">
         <a-assets>
             <a-asset-item id="akaeiModel_01" src="./assets/akaei-swing-dance.glb"></a-asset-item>
             <a-asset-item id="akaeiModel_02" src="./assets/akaeiDying02.glb"></a-asset-item>
@@ -177,6 +177,11 @@
 
         <!-- マウスカーソル -->
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
+
+        <!-- Controller -->
+        <a-entity laser-controls="hand: left" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
+        <a-entity laser-controls="hand: right" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
+
         
         <!-- クリックしたいentityグループ -->
         <a-entity id="akaeiGroup" position="0 1.6 -1">
