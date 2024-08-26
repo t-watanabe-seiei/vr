@@ -58,16 +58,16 @@
                       targetEl.removeAttribute('gltf-model');
                       targetEl.setAttribute('gltf-model', '#akaeiModel_02');
 
-                      setTimeout(removeModel, 4000, "該当modelを削除します", targetEl);
+                      setTimeout(removeModel2, 4000, "該当modelを削除します", targetEl);
                   }
 
-                  const removeModel = function (msg1, model) {
+                  const removeModel2 = function (msg1, model) {
                       console.log(msg1);
                       model.removeAttribute('gltf-model');
-                      setTimeout(reDirectPage, 2000, "次のページへ遷移します,", model);
+                      setTimeout(reDirectPage2, 2000, "次のページへ遷移します,", model);
                   };
 
-                  const reDirectPage = function (msg1) {
+                  const reDirectPage2 = function (msg1) {
                       console.log(msg1);
                       //次のページへ遷移
                       // window.location.href = 'artwork01.html';
@@ -75,11 +75,11 @@
                       //　背景を変更 a-sky
                       // const model = document.getElementById('aSky');
                       // model.setAttribute('src', '#sky02');
-                      const model = document.getElementById('akaeiGroup');
-                      console.log(model.getAttribute('position'));
-                      model.setAttribute('position','32 -1.6 3')
+                      let model1 = document.getElementById('akaeiGroup');
+                      console.log(model1.getAttribute('position'));
+                      model1.setAttribute('position','32 -1.6 3')
 
-                      const model2 = document.getElementById('target3DModel');
+                      let model2 = document.getElementById('target3DModel');
                       model2.removeAttribute('gltf-model');
                       model2.setAttribute('gltf-model', '#akaeiModel_01');
                       model2.setAttribute('scale', '10 10 10');
