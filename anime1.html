@@ -51,10 +51,14 @@
               ball.addEventListener('collide', function (e) {
                   var targetEl = e.detail.body.el; // 衝突相手のエンティティ
                   if (targetEl) {
-                      var targetId = targetEl.getAttribute('id'); // 衝突相手のIDを取得
-                      if (targetId) {
-                          txt.setAttribute("value", targetId); // 衝突相手のIDを表示
-                      }
+                      // var targetId = targetEl.getAttribute('id'); // 衝突相手のIDを取得
+                      // if (targetId) {
+                      //     txt.setAttribute("value", targetId); // 衝突相手のIDを表示
+                      // }
+                      targetEl.removeAttribute('gltf-model');
+                      targetEl.setAttribute('gltf-model', '#akaeiModel_02');
+
+                      setTimeout(removeModel, 4000, "該当modelを削除します", targetEl);
                   }
               });
 
@@ -186,10 +190,10 @@
         <!-- クリックしたいentityグループ -->
         <a-entity id="akaeiGroup" position="0 1.6 -1">
             <!-- 3Dモデル -->
-            <a-entity id="target3DModel" gltf-model="#akaeiModel_01" scale="1 1 1" rotation="0 0 0" animation-mixer>
+            <a-entity id="target3DModel" gltf-model="#akaeiModel_01" scale="1 1 1" rotation="0 0 0" static-body class="collidable"  animation-mixer>
 
                 <!-- 当たり判定オブジェクト -->
-                <a-entity position="0 -0.05 0" hit-box static-body class="collidable" >
+                <a-entity position="0 -0.05 0" hit-box>
                     <a-entity class="raycastable" geometry="primitive:cylinder" material="color:red; opacity: 0.1"
                         scale="0.1 0.2 0.18" position="0 0.2 0" visible="true"></a-entity>
                 </a-entity>
