@@ -115,11 +115,11 @@
         <!-- クリックしたいentityグループ -->
         <a-entity id="akaeiGroup" position="0 1.6 -1">
             <!-- 3Dモデル -->
-            <a-entity id="target3DModel" gltf-model="#akaeiModel_01" scale="1 1 1" rotation="0 0 0" animation-mixer>
+            <a-entity id="target3DModel" class="collidable" gltf-model="#akaeiModel_01" scale="1 1 1" rotation="0 0 0" animation-mixer>
 
                 <!-- 当たり判定オブジェクト -->
                 <a-entity position="0 -0.05 0" hit-box>
-                    <a-entity class="raycastable" geometry="primitive:cylinder" material="color:red; opacity: 0.1"
+                    <a-entity class="raycastable collidable"  geometry="primitive:cylinder" material="color:red; opacity: 0.1"
                         scale="0.1 0.2 0.18" position="0 0.2 0" visible="true"></a-entity>
                 </a-entity>
             </a-entity>
