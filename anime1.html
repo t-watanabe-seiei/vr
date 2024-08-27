@@ -14,6 +14,7 @@
             init: function () {
                 // akaeiModel_01のエンティティを取得
                 const model = document.getElementById('target3DModel');
+                let hitFlag = false;
 
                 this.el.addEventListener('click', () => {
                     console.log('clicked!');
@@ -23,24 +24,35 @@
                     model.removeAttribute('gltf-model');
                     model.setAttribute('gltf-model', '#akaeiModel_02');
 
-                    setTimeout(removeModel, 4000, "該当modelを削除します", model);
+                    if(hitFlag){
+                        setTimeout(movePage, 4000, "次のページへ遷移します");
+                    }else{
+                        setTimeout(rePaintModel, 4000, "該当modelを削除し、別の場所に再描画します", model);
+                    }
+                    
                 });
 
-
-                const removeModel = function (msg1, model) {
-                    console.log(msg1);
-                    model.removeAttribute('gltf-model');
-                    setTimeout(reDirectPage, 2000, "次のページへ遷移します,", model);
-                };
-
-                const reDirectPage = function (msg1) {
+                const movePage = function (msg1){
                     console.log(msg1);
                     //次のページへ遷移
-                    // window.location.href = 'artwork01.html';
+                    window.location.href = 'artwork01.html';
+                }
+
+
+                // const removeModel = function (msg1, model) {
+                //     console.log(msg1);
+                //     model.removeAttribute('gltf-model');
+                //     setTimeout(rePaindModel, 2000, "次の場所にモデルを表示します,", model);
+                // };
+
+                const rePaintModel = function (msg1) {
+                    console.log(msg1);
 
                     //　背景を変更 a-sky
-                    // const model = document.getElementById('aSky');
-                    // model.setAttribute('src', '#sky02');
+                    // const aSky = document.getElementById('aSky');
+                    // aSky.setAttribute('src', '#sky02');
+
+                    //akaeiGroupの一を変更
                     const model = document.getElementById('akaeiGroup');
                     console.log(model.getAttribute('position'));
                     model.setAttribute('position','32 -1.6 3')
@@ -50,6 +62,9 @@
                     model2.setAttribute('gltf-model', '#akaeiModel_01');
                     model2.setAttribute('scale', '10 10 10');
                     model2.setAttribute('rotation', '0 -90 0');
+                    hitFlag = true;
+                    let mytext = document.getElementById("my_text");
+                    mytext.setAttribute("value", "re find akaei++");
                 };
 
             }
@@ -83,10 +98,6 @@
             <a-asset-item id="akaeiModel_01" src="./assets/akaei-swing-dance.glb"></a-asset-item>
             <a-asset-item id="akaeiModel_02" src="./assets/akaeiDying02.glb"></a-asset-item>
             <img id="sky01" src="./assets/R0010034.JPG">
-            <img id="sky02" src="./assets/R0010035.JPG">
-            <img id="sky03" src="./assets/R0010041.JPG">
-            <img id="sky04" src="./assets/R0010056.JPG">
-            <img id="sky05" src="./assets/R0010064.JPG">
         </a-assets>
 
         <!-- マウスカーソル -->
@@ -114,7 +125,7 @@
 
         <a-camera id="my_camera">
             <a-cursor></a-cursor>
-            <a-text id="my_text" value="*17*" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+            <a-text id="my_text" value="find akaei **19**" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
         </a-camera>
     </a-scene>
 </body>
