@@ -70,9 +70,6 @@
                 // this.el.addEventListener("gripdown", function(e) {
                 //     text.setAttribute("value", "GripDown!!");
                 // });
-                // this.el.addEventListener("gripup", function(e) {
-                //     text.setAttribute("value", "GripUp!!");
-                // });
             }
         });
 
@@ -88,6 +85,8 @@
             <img id="sky01" src="./assets/R0010034.JPG">
             <img id="sky02" src="./assets/R0010035.JPG">
             <img id="sky03" src="./assets/R0010041.JPG">
+            <img id="sky04" src="./assets/R0010056.JPG">
+            <img id="sky05" src="./assets/R0010064.JPG">
         </a-assets>
 
         <!-- マウスカーソル -->
@@ -104,7 +103,7 @@
 
                 <!-- 当たり判定オブジェクト -->
                 <a-entity position="0 -0.05 0" hit-box>
-                    <a-entity class="raycastable collidable"  geometry="primitive:cylinder" material="color:red; opacity: 0.1"
+                    <a-entity class="raycastable collidable"  geometry="primitive:cylinder" material="color:red; opacity: 0.2"
                         scale="0.1 0.2 0.18" position="0 0.2 0" visible="true"></a-entity>
                 </a-entity>
             </a-entity>
@@ -115,7 +114,7 @@
 
         <a-camera id="my_camera">
             <a-cursor></a-cursor>
-            <a-text id="my_text" value="*14*" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+            <a-text id="my_text" value="*17*" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
         </a-camera>
     </a-scene>
 </body>
