@@ -109,8 +109,8 @@
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .raycastable"></a-entity>
 
         <!-- Controller -->
-        <a-entity laser-controls="hand: left" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
-        <a-entity laser-controls="hand: right" raycaster="objects: .collidable; far: 5" vr-controller></a-entity>
+        <a-entity laser-controls="hand: left" raycaster="objects: .collidable; far: 20" vr-controller></a-entity>
+        <a-entity laser-controls="hand: right" raycaster="objects: .collidable; far: 20" vr-controller></a-entity>
         
         <!-- クリックしたいentityグループ -->
         <a-entity id="akaeiGroup" position="0 1.6 -1">
@@ -130,7 +130,7 @@
 
         <a-camera id="my_camera">
             <a-cursor></a-cursor>
-            <a-text id="my_text" value="***" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
+            <a-text id="my_text" value="*13*" position="0 -0.1 -2" scale="0.4 0.4 0.4" align="center" color="#ffffff"></a-text>
         </a-camera>
     </a-scene>
 </body>
